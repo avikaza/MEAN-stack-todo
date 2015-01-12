@@ -1,0 +1,36 @@
+<div class="signup-card" ng-controller="LoginSignUpController">
+    <fieldset>
+        <legend>TODO Sign Up</legend>
+        <div class="row">
+            <label>Name</label>
+                <div class="large-6 columns">
+                    <input type="text" ng-model="firstName" placeholder="First">
+                </div>
+                <div class="large-6 columns">
+                    <input type="text" ng-model="lastName" placeholder="Last">
+                </div>
+        </div>
+        <div class="row">
+            <label>User Email</label>
+            <div class="large-8 columns">
+                <input type="text" ng-model="userEmail"/>
+            </div>
+        </div>
+        <div class="row">
+            <label>Password</label>
+            <div class="large-8 columns">
+                <input type="password" ng-model="password"/>
+            </div>
+        </div>
+        <div class="row">
+            <label>Confirm Password</label>
+            <div class="large-8 columns">
+                <input type="password" ng-model="confirmPassword"/>
+            </div>
+        </div>
+        <div class="row">
+            <input type="button" value="Sign Me Up" class="small button" ng-click="signUpHandler()"/>
+        </div>
+    </fieldset>
+    <small class="error" ng-show="showError">{{errorMessage}}</small>
+</div>

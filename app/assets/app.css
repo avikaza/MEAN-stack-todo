@@ -1,0 +1,38 @@
+body {
+  background-color:#606060;
+}
+.login-card {
+    background-color: #ffffff;
+    border-color: #000000;
+    border-style: solid;
+    border-width: 1px;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    margin-top: 10%;
+}
+.signup-card {
+    background-color: #ffffff;
+    border-color: #000000;
+    border-style: solid;
+    border-width: 1px;
+    width: 400px;
+    height: 500px;
+    margin: auto;
+    margin-top: 10%;
+}
+.todo-screen {
+    background-color: #ffffff;
+    position:fixed !important;
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+}
+.row.display { background: #eee; font-size: 11px; margin-bottom: 10px; }
+.row.display.first {margin-bottom:0px;}
+.row.display .columns, .row.display .column { background: #e7e7e7; border: 1px solid #ddd; font-weight: bold; text-indent: 3px; padding-top: 8px; color: #444; padding-bottom: 8px; }
+.big-text { font-size: 15px}
+.strike {text-decoration:line-through}
+.scrollable {overflow-y: scroll}

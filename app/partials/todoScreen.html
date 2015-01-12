@@ -1,0 +1,89 @@
+<div class="todo-screen scrollable" ng-controller="TODOsController">
+    <span style="text-align:center"><h3 class="subheader">TODO List of {{user.profile.name.first}} {{user.profile.name.last}}</h3></span>
+  <div ng-show="!showAddNewTask" class="row">
+      <span class="small-4 columns">&nbsp;</span>
+      <input type="button" class="small-4 button columns" value="Add New Task" ng-click="showAddNewTask=true">
+      <span class="small-4 columns">&nbsp;</span>
+  </div>
+  <div class="row" ng-show="showAddNewTask">
+   <fieldset>
+    <legend>Add a New Task</legend>
+    <div class="row display first">
+        <div class="large-7 columns big-text">
+            <label>New Task</label>
+            <input type="text" ng-model="task"/>
+        </div>
+        <div class="large-1 columns big-text">
+            <label>Priority</label>
+            <input type="text" ng-model="priority"/>
+        </div>
+        <div class="large-4 columns big-text">
+            <label>Due Date</label>
+            <input type="text" datepicker-popup="dd-MMM-yyyy" ng-model="dueDate" min="minDate" max="'2015-06-22'"/>
+        </div>
+    </div>
+    <div class="row display">
+        <div class="large-10 columns big-text">
+            <label>Task Description</label>
+            <input type="text" ng-model="taskDescription" />
+        </div>
+        <div class="large-2 columns big-text">
+            <label>&nbsp;</label>
+            <input type="button" value="Add" ng-click="addTask()"/>
+        </div>
+    </div>
+    <small class="error" ng-show="showError">{{errorMessage}}</small>
+   </fieldset>
+
+  </div>
+    <fieldset>
+        <legend>{{todos.length}} Tasks</legend>
+        <div class="row">
+            <div class="large-9 columns">&nbsp;</div>
+            <div class="large-3 columns">
+                <label for="selSort">Sort By</label>
+                <select id="selSort" ng-model="selSort" class="medium custom">
+                    <option value="priority">Priority First to Last</option>
+                    <option value="-priority">Priority Last to First</option>
+                    <option value="due_date">Due Date Closest to Farthest</option>
+                    <option value="-due_date">Due Date Farthest to Closest</option>
+                </select>
+            </div>
+        </div>
+        <div ng-repeat="todo in todos | orderBy:selSort">
+            <div class="row display first" ng-show="showError2 && checkIndex(todo._id)">
+                <div class="large-12 columns big-text" ng-class="{true:'strike'}[todo.complete]">
+                    <small class="error">{{errorMessage2}}</small>
+                </div>
+            </div>
+             <div ng-show="checkIndex(todo._id)">
+                 <div class="row display first">
+                     <div class="large-8 columns big-text" ng-class="{true:'strike'}[todo.complete]">
+                         <input type="text" ng-model="todo.task"/>
+                     </div>
+                     <div class="large-1 columns big-text"><input type="text" ng-model="todo.priority"></div>
+                     <div class="large-3 columns big-text"><input type="text" datepicker-popup="dd-MMM-yyyy" ng-model="todo.due_date" min="minDate" max="'2015-06-22'"/></div>
+                 </div>
+                 <div class="row display">
+                     <div class="large-8 columns"><input type="text" ng-model="todo.task_description"/></div>
+                     <div class="large-4 columns" ng-click="updateTask(todo)"><span class="btn-link text-center">&#10004; Save </span></div>
+                 </div>
+             </div>
+             <div ng-show="!checkIndex(todo._id)">
+                 <div class="row display first">
+                    <div class="large-8 columns big-text" ng-class="{true:'strike'}[todo.complete]">
+                        <input type="checkbox" ng-model="todo.complete" ng-click="updateTask(todo)"/>
+                        <span>{{todo.task}}</span>
+                    </div>
+                    <div class="large-1 columns big-text">{{todo.priority}}</div>
+                    <div class="large-3 columns big-text">{{todo.due_date | date:'dd-MMM-yyyy'}}</div>
+                </div>
+                <div class="row display">
+                    <div class="large-8 columns">{{todo.task_description}}</div>
+                    <div class="large-2 columns" ng-click="setEditModeIndex(todo._id)"><span class="btn-link text-center">&#x270E; Edit </span></div>
+                    <div class="large-2 columns" ng-click="deleteTask(todo)"><span class="btn-link text-center"> &#x2716; Delete</span></div>
+                </div>
+             </div>
+        </div>
+    </fieldset>
+</div>

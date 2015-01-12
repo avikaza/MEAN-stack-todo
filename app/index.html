@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:ng="http://angularjs.org" id="ng-app"  ng-app="TODO">
+<head>
+    <title>TODO List</title>
+    <link href="assets/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+    <link href="assets/foundation.min.css" type="text/css" rel="stylesheet"/>
+    <link href="assets/app.css" type="text/css" rel="stylesheet"/>
+
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular/angular-resource.min.js"></script>
+    <script src="lib/ui-bootstrap-custom-tpls-0.6.0.min.js"></script>
+
+    <script src="common/js/constants.js"></script>
+    <script src="common/js/app.js"></script>
+    <script src="common/js/controllers/loginSignUpController.js"></script>
+    <script src="common/js/controllers/todosController.js"></script>
+    <script src="common/js/directives/todoDirective.js"></script>
+    <script src="common/js/filters/todoFilter.js"></script>
+    <script src="common/js/services/todoService.js"></script>
+</head>
+<body>
+  <div class="ng-view"></div>
+  <!-- IE Fix for HTML5 Tags -->
+  <!--[if lte IE 8]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endig]-->
+</body>
+</html>
